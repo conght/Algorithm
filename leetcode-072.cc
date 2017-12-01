@@ -23,14 +23,17 @@ public:
 
         for (int i=0;i<M+1;i++)
             for (int j=0;j<N+1;j++)
-                dp[i][j] = max(M*2+1, N*2+1);
+                dp[i][j] = 0;
 
-        dp[0][0] = 0;
+        for (int i=0;i<M+1;i++) 
+            dp[i][0] = i;
+        for (int j=0;j<N+1;j++) 
+            dp[0][j] = j;
 
         for (int i=1;i<M+1;i++)
             for (int j=1;j<N+1;j++) {
                 int flag = 1;
-                if (word1[i] == word2[j])
+                if (word1[i-1] == word2[j-1])
                     flag = 0;
                 dp[i][j] = _Min(dp[i-1][j]+1, dp[i][j-1]+1, dp[i-1][j-1] + flag);
             }
@@ -48,8 +51,8 @@ public:
 
 int main() {
     Solution* s = new Solution();
-    string a = "a";
-    string b = "b";
+    string a = "sea";
+    string b = "eat";
     cout << s->minDistance(a, b) << endl;
     delete s;
     return 0;
