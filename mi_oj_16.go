@@ -104,7 +104,7 @@ func solution(line string) string {
         backOrder = append(backOrder, value)    
     }
     // 返回处理后的结果
-    fmt.Println(backOrder)
+    //fmt.Println(backOrder)
     stack2 := NewStack()
     for i:=0;i<len(backOrder);i++ {
         if !isOperator(backOrder[i]) {
