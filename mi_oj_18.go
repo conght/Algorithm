@@ -24,7 +24,7 @@ func (c nodeArray) Swap(i, j int) {
     c[i].K, c[j].K = c[j].K, c[i].K
 }
 func (c nodeArray) Less(i, j int) bool {
-    if (c[i].Height < c[j].Height) {
+    if (c[i].Height > c[j].Height) {
         return true
     }
 
@@ -61,13 +61,15 @@ func solution(line string) string {
         //fmt.Println(count)
 
         if (count!=nArr[i].K) {
-            nArr[i], nArr[nArr[i].K - count + i] = nArr[nArr[i].K - count + i], nArr[i]
-            if (i > nArr[i].K - count + i) {
-                i = nArr[i].K - count + i
+            //nArr[i], nArr[nArr[i].K - count + i] = nArr[nArr[i].K - count + i], nArr[i]
+            d:=i-count+nArr[i].K
+            for j:=i;j>d;j-- {
+                //fmt.Println(j,i,d,count)
+                nArr[j], nArr[j-1] = nArr[j-1], nArr[j]
             }
-        }  else {
+        }  //else {
             i++
-        }
+        //}
         //fmt.Println(nArr)
     }
     
