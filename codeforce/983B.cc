@@ -1,6 +1,7 @@
 //http://codeforces.com/contest/983/submission/38313655
 
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -30,13 +31,29 @@ void solution()
         }
     }
 
-    for (int i=0;i<n;i++)
+    for (int i=1;i<n;i++)
     {
-        for (int j=0;j<n;j++)
+        for (int j=0;j<n-i;j++)
         {
-            cout << d[i][j] << " ";
+            d[i][j] = max(d[i][j], max(d[i-1][j], d[i-1][j+1]));
         }
-        cout << endl;
+    }
+
+    // for (int i=0;i<n;i++)
+    // {
+    //     for (int j=0;j<n;j++)
+    //     {
+    //         cout << d[i][j] << " ";
+    //     }
+    //     cout << endl;
+    // }
+
+    cin >> q;
+    while(q-- > 0)
+    {
+        cin >> l;
+        cin >> r;
+        cout << d[r-l][l-1] << endl;
     }
 
 }
