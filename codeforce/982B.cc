@@ -42,7 +42,6 @@ void solution()
     {
         if (s[i] == '0')
         {
-        	//cout << p << endl;
         	cout  << seats_info[p].index;
         	stk.push(p);
         	if (p < n-1)
@@ -53,7 +52,6 @@ void solution()
         }
         if (s[i] == '1')
         {
-        	//cout << q << endl;
         	q = stk.top();
         	stk.pop();
         	cout << seats_info[q].index;
