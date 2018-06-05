@@ -46,9 +46,23 @@ int main()
 		edge[q].push_back(p);
 	}
 
+	if (n&1)
+	{
+		cout << "-1" << endl;
+		return 0;
+	}
+
 	sub_node_num(1, 0, edge, nodes, visit);
 
-	//for (int i=1;i<=n;i++)
-	//	cout << nodes[i] << endl;
+	int ans = 0;
+	for (int i=1;i<n+1;i++)
+	{
+		if (nodes[i]%2 == 0)
+			ans += 1;
+	}
+
+	ans--;
+
+	cout << ans << endl;
 
 }
