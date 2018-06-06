@@ -44,15 +44,6 @@ void solution()
         }
     }
 
-    // for (int i=0;i<n;i++)
-    // {
-    //     for (int j=0;j<n;j++)
-    //     {
-    //         cout << d[i][j] << " ";
-    //     }
-    //     cout << endl;
-    // }
-
     cin >> q;
     while(q-- > 0)
     {
