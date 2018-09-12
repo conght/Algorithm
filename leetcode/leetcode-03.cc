@@ -27,13 +27,15 @@ public:
                     break;
                 }
             }
+            if (j == s.length())
+                break;
         }
         return ans;
     }
 };
 
 int main() {
-    string s = "abcabcbb";
+    string s = "bbbbb";
     Solution sln;
     cout << sln.lengthOfLongestSubstring(s) << endl;
 }
