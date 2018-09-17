@@ -33,8 +33,6 @@
 
 ## Common
 
-sort
-
 1. #### Sort
 
 - 选择排序 —— selected_sort.cc
