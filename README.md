@@ -35,4 +35,7 @@
 
 1. #### Sort
 
-- 选择排序 —— selected_sort.cc
+- 选择排序 —— [selected_sort.cc](common/sort/selected_sort.cc)
+- 插入排序 —— [insert_sort.cc](common/sort/insert_sort.cc)
+- 归并排序 —— [merge_sort.cc](common/sort/merge_sort.cc)
+- 快速排序 —— [quick_sort.cc](common/sort/quick_sort.cc)
