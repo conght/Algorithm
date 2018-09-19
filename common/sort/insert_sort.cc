@@ -2,8 +2,7 @@
 
 using namespace std;
 
-//template <typename T>
-void InsertSort(vector<int>& input) {
+/*void InsertSort(vector<int>& input) {
     if (input.size() <= 1) {
         return ;
     }
@@ -17,7 +16,28 @@ void InsertSort(vector<int>& input) {
     }
     return;
 }
+*/
+
+template <class RandomAccessIterator>
+void InsertSort(RandomAccessIterator first,
+                RandomAccessIterator last) {
+
+    for (RandomAccessIterator i = first;
+         i != last;
+         i++) {
+        for (RandomAccessIterator j=i;
+             j != first && *j < *(j-1); j--) {
+            swap(*(j-1), *j);
+        }
+    }
+    return;
+}
 
 int main() {
+    std::vector<int> v = {3, 2, 1};
+    InsertSort(v.begin(), v.end());
+    for (auto i : v) {
+        cout << i << endl;
+    }
     return 0;
 }
