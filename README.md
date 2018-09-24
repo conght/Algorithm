@@ -1,4 +1,5 @@
-# Oj解题答案&常见数据结构及算法
+# OJ 解题答案&常见数据结构及算法
+
 
 
 
@@ -6,7 +7,7 @@
 
 
 
-## Leetcode
+### Leetcode
 
 收录leetcode的解题答案
 
@@ -19,19 +20,19 @@
 
 
 
-## Codeforces
+### Codeforces
 
 收录Codeforces几次比赛的解题答案
 
 
 
-## XiaomiOj
+### XiaomiOj
 
 收录小米公司OJ的解题答案
 
 
 
-## Common
+### Common
 
 1. #### Sort
 
