@@ -5,20 +5,20 @@ using namespace std;
 
 class Solution {
 public:
-    string longestPalindrome(string s) {
+    string longestPalindromev1(string s) {
         int str_len = s.length();
-        
+
         string result = "";
-        
+
         if (str_len == 0 || str_len == 1) {
             return s;
         }
-        
+
         // new a dp table
         bool ** dp = new bool *[str_len];
         for (int i=0;i<str_len;i++)
             dp[i] = new bool [str_len];
-        
+
         // init dp table
         for (int i = 0;i < str_len; i++) {
             for (int j = 0;j < str_len; j++) {
@@ -26,15 +26,15 @@ public:
                     *(*(dp+i) + j)  = true;
                 else
                     *(*(dp+i) + j) = false;
-                
+
             }
         }
-        
+
         // declare params
         int max_length = 1;
         int start_index = 0;
         int end_index = 0;
-        
+
         // first loop : l - length of s[i~j]
         for (int l = 2; l < str_len + 1 ; l ++) {
             // second loop : j - end_index of s[i~j]
@@ -46,11 +46,11 @@ public:
                         dp[i][i+l-1] = true;
                     else
                         dp[i][i+l-1] = dp[i+1][i+l-2] == true ? true:false;
-                    
+
                 } else {
                     dp[i][i+l-1] = false;
                 }
-                
+
                 if (dp[i][i+l-1] && max_length < l) {
                     max_length = l;
                     start_index = i;
@@ -59,20 +59,76 @@ public:
             }
             //}
         }
-        
+
         result = s.substr(start_index, max_length);
-        
+
         delete [] dp;
         return result;
+    }
+
+    /*int longestPalindromeHelper(const string& s, int& begin, int& end) {
+
+        if (begin < 0 || end >= s.size()) return 0;
+
+        int len = end - begin + 1;
+        while (begin >= 0 && end < s.size() - 1) {
+            if (s[begin] == s[end]) {
+                begin--;
+                end++;
+            } else {
+                break;
+            }
+        }
+
+        len = max(len, end - begin + 1);
+        if (len < max(longestPalindromeHelper(s, begin-1, end-1)) {
+
+        }
+        return max(len, , longestPalindromeHelper(s, begin+1, end+1)));
+    }*/
+
+    string longestPalindrome(string s) {
+        if (s == "") return s;
+
+        int len = 0;
+        string ans;
+        int begin, end;
+        if (s.length()%2 == 1) { begin = end = s.length()/2; }
+        else { begin = s.length()/2 - 1; end = s.length()/2; }
+
+        while (begin >= 0 && end < s.size()) {
+            //int i = begin;
+            //int j = end;
+            //while (i >= 0 && j < s.size() - 1)
+            if (s[begin] == s[end]) {
+                begin--;
+                end++;
+            } else {
+                break;
+            }
+        }
+        begin++;
+        end--;
+
+        if (len < (end - begin + 1)) ans = s.substr(begin, end - begin + 1);
+        if (ans.length() >= s.length() - 1) return ans;
+
+        string left_ans = longestPalindrome(s.substr(0, s.length()-1));
+        if (left_ans.length() > ans.length()) ans = left_ans;
+
+        string right_ans = longestPalindrome(s.substr(1, s.length()-1));
+        if (right_ans.length() > ans.length()) ans = right_ans;
+        return ans;
     }
 };
 
 int main() {
 	Solution* s = new Solution();
-	string input = "";
-	while(cin >> input && input != "!") {
-		cout << s->longestPalindrome(input) << endl;
-	}
+	string input = "babaddtattarrattatddetartrateedredividerb";
+	/*while(cin >> input && input != "!") {
+		cout << s->longestPalindromeV2(input) << endl;
+	}*/
+    cout << s->longestPalindrome(input) << endl;
 	delete s;
 	return 0;
 }

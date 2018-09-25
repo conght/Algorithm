@@ -16,12 +16,14 @@ public:
     }
 
     int maxArea(vector<int>& height) {
-        int ans = min(height[0], height[1]);
-        int max_index = height[1] > height[0] ? 1 : 0;
-        for (int i=2; i<height.size(); i++) {
-            int tmp = min(height[max_index], height[i]) * (i - max_index);
-            ans = ans < tmp ? tmp : ans;
-            max_index = height[max_index] < height[i] ? i : max_index;
+        int ans = 0;
+
+        int i = 0;
+        int j = height.size() - 1;
+        while (i < j) {
+            ans = max(ans, min(height[i], height[j])*(j-i));
+            if (height[i] < height[j]) i++;
+            else j--;
         }
         return ans;
     }
