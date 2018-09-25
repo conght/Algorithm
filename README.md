@@ -1,5 +1,7 @@
 # OJ 解题答案&常见数据结构及算法
 
+[![Build Status](https://travis-ci.org/XiaoMi/mace.svg?branch=master)]()
+[![doc build status](https://readthedocs.org/projects/mace/badge/?version=latest)](https://readthedocs.org/projects/mace/badge/?version=latest)
 
 
 
