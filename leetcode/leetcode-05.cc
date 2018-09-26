@@ -66,28 +66,7 @@ public:
         return result;
     }
 
-    /*int longestPalindromeHelper(const string& s, int& begin, int& end) {
-
-        if (begin < 0 || end >= s.size()) return 0;
-
-        int len = end - begin + 1;
-        while (begin >= 0 && end < s.size() - 1) {
-            if (s[begin] == s[end]) {
-                begin--;
-                end++;
-            } else {
-                break;
-            }
-        }
-
-        len = max(len, end - begin + 1);
-        if (len < max(longestPalindromeHelper(s, begin-1, end-1)) {
-
-        }
-        return max(len, , longestPalindromeHelper(s, begin+1, end+1)));
-    }*/
-
-    string longestPalindrome(string s) {
+    string longestPalindromev2(string s) {
         if (s == "") return s;
 
         int len = 0;
@@ -124,7 +103,7 @@ public:
 
 int main() {
 	Solution* s = new Solution();
-	string input = "babaddtattarrattatddetartrateedredividerb";
+	string input = "babaddtattarrattatddetartb";
 	/*while(cin >> input && input != "!") {
 		cout << s->longestPalindromeV2(input) << endl;
 	}*/
