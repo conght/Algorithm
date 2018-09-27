@@ -99,6 +99,38 @@ public:
         if (right_ans.length() > ans.length()) ans = right_ans;
         return ans;
     }
+
+    string longestPalindrome(string s) {
+        //if (ans != "") return ans;
+        if (s == "") return s;
+
+        int len = 0;
+        string ret = "";
+        int begin = 0, end = s.length() - 1;
+
+
+        int p = begin;
+        int q = end;
+        while (p < q) {
+            if (s[p] == s[q]) {
+                p++;
+                q--;
+            } else {
+                break;
+            }
+        }
+        if (p < q) {
+            //begin++;
+            string left_ret = longestPalindrome(s.substr(0, s.length() - 1));
+            string right_ret = longestPalindrome(s.substr(1));
+
+            if (left_ret.length() > right_ret.length()) ret = ans = left_ret;
+            else ret = ans = right_ret;
+        } else {
+            ret = ans = s;
+        }
+        return ret;
+    }
 };
 
 int main() {
