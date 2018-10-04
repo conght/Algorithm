@@ -11,6 +11,24 @@ struct TreeLinkNode {
 
 class Solution {
 public:
+
+    TreeLinkNode* connectHelper(TreeLinkNode *root, TreeLinkNode *prev) {
+        if (NULL == root) return root;
+
+        if (root->left != NULL) {
+            root->left->next = root->right;
+        }
+
+        if (prev != NULL) {
+            prev->next = root->right;
+        }
+
+        if (root->right == NULL) {
+            if (prev != NULL)
+        }
+
+    }
+
     void connect(TreeLinkNode *root) {
 
     }
