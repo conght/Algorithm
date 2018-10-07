@@ -29,7 +29,18 @@ Output: 6*/
  */
 class Solution {
 public:
+    void countNodesHelper(TreeNode* root, int& number) {
+        if (NULL == root) { return ; }
+
+        number = number + 1;
+        countNodesHelper(root->left, number);
+        countNodesHelper(root->right, number);
+    }
     int countNodes(TreeNode* root) {
 
+        int number = 0;
+        countNodesHelper(root, number);
+
+        return number;
     }
 };
