@@ -44,24 +44,22 @@ using namespace std;
 class Solution {
 public:
 
-    bool isValidBSTHelper(TreeNode* root, TreeNode* prev) {
-        if (NULL == root) return true;
-        if (root->left && root->val <= root->left->val) return false;
-        if (root->right && root->val >= root->right->val) return false;
+    vector<TreeNode*> vct;
+    void isValidBSTHelper(TreeNode* root) {
+        if (NULL == root) return;
 
-        if (prev && prev->left == root) {
-            if (root->left && prev->val <= root->left->val) return false;
-            if (root->right && prev->val <= root->right->val) return false;
-        }
+        isValidBSTHelper(root->left);
+        vct.push_back(root);
+        isValidBSTHelper(root->right);
 
-        if (prev && prev->right == root) {
-            if (root->left && prev->val >= root->left->val) return false;
-            if (root->right && prev->val >= root->right->val) return false;
-        }
-
-        return isValidBSTHelper(root->left, root) && isValidBSTHelper(root->right, root);
     }
     bool isValidBST(TreeNode* root) {
-        return isValidBSTHelper(root, NULL);
+        isValidBSTHelper(root);
+
+        for (int i=1; i<vct.size(); i++) {
+            if (vct[i-1]->val >= vct[i]->val) return false;
+        }
+
+        return true;
     }
 };
