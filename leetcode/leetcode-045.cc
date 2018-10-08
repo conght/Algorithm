@@ -4,27 +4,26 @@ using namespace std;
 
 class Solution {
 public:
+    int jump(vector<int>& nums) {
 
-    bool canJumpHelper(vector<int>& nums, int index) {
-        if (index >= nums.size() - 1) return true;
-        if (nums[index] + index >= nums.size() - 1) return true;
-        for (int i=nums[index]; i>0; i--) {
-            if (canJumpHelper(nums, index+i)) return true;
-        }
-        return false;
-    }
+        if (nums.size() == 1) return 0;
 
-    bool jump(vector<int>& nums) {
-        //return canJumpHelper(nums, 0);
-        int position = nums.size() - 1;
-        for (int i=position-1; i>=0; i--) {
-            if (nums[i] + i >= position) position = i;
+        vector<int> d(nums.size(), nums.size());
+        d[nums.size()-1] = 0;
+
+        for (int i=nums.size()-2; i>=0; i--) {
+            if (i+nums[i] >= nums.size()-1) d[i] = 1;
+            else {
+                for (int j=i+1;j<=i+nums[i];j++) d[i] = min(d[i], d[j]+1);
+            }
         }
 
-        return position == 0;
+        return d[0];
     }
 };
 
 int main() {
+    vector<int> nums({2,3,1,1,4});
+    cout << Solution().jump(nums) << endl;
     return 0;
 }
