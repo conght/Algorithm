@@ -10,7 +10,7 @@ class Solution {
 public:
     ListNode* rotateRight(ListNode* head, int k) {
 
-        int ans = head;
+        ListNode* ans = head;
 
         if (NULL == head) return ans;
 
@@ -25,13 +25,15 @@ public:
         if (0 == k) return ans;
 
         k = length - k;
-        ListNode* p,q;
-        head = p = q = ans;
+        ListNode* p=ans;
+        ListNode* q=ans;
+        head = ans;
         for (int i=0; i<k-1; i++) p = p->next;
         q = p->next;
+        ans = q;
+        while (q->next) q = q->next;
         q->next = head;
         p->next = NULL;
-        ans = q;
 
         return ans;
     }
